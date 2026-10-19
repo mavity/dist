@@ -1,0 +1,383 @@
+<!--
+function __README__() { /*
+-->
+# Mohabbat
+
+मोहब्बत &mdash; love.
+
+Mohabbat is a tool for building a single binary capable of running anywhere: Windows, Linux, macOS, even on Android*.
+
+We call such binaries **🍆vegetables** and Mohabbat comes with Rust and Go integration.
+
+<sup>* Android support is experimental.</sup>
+
+<pre class=splash>
+  __  __
+---
+
+🧿👖🧿👖🧿🧿👖🧿🧿👖🌊🧿🌊🌊🌊🧿🌊🌊🌊🌊🌊🟦🌊🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🩵🟦🟦🩵🟦🩵🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🌊🟦🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊
+🧿👖🧿👖👖🌊👮🧿🌊🧿🌊🌊🧿🌊🌊🌊🌊🧿🌊🌊🟦🌊🟦🌊🟦🌊🟦🟦🟦🟦🩵🟦🩵🟦🩵🟦🩵🟦🟦🩵🟦🟦🩵🟦🩵🟦🩵🟦🩵🩵🟦🩵🟦🩵🟦🩵🟦🟦🟦🟦🟦🌊🟦🌊🟦🌊🟦🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊
+🧿👖🌊🧿🌊🧿🧿👖🧿🌊🌊🌊🌊🌊🟦🌊🟦🌊🟦🧿🌊🟦🌊🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🩵🟦🩵🟦🩵🟦🟦🩵🟦🟦🩵🟦🟦🩵🟦🟦🟦🩵🟦🟦🩵🟦🟦🩵🟦🟦🟦🟦🟦🟦🌊🟦🌊🌊🟦🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊
+🌊🌊👖🌊🧿🌊🌊🌊🌊🧿🌊🌊🌊🌊🌊🟦🌊🌊🌊🟦🧿🟦🌊🟦🟦🟦🟦🟦🟦🟦🌊🟦🩵🟦🟦🩵🟦🟦🩵🟦🟦🩵🟦🟦🟦🌊🟦🟦🩵🟦🟦🩵🌊🌊🟦🟦🟦🟦🟦🟦🟩🟦🌊🟦🌊🟦🌊🌊🟦🌊🟦🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊
+🌊🧿🌊🌊🧿🌊🧿🌊🌊🌊🌊🟦🌊🟦🌊🟦🌊🟦🌊🟦🌊🟦🟦🟦🌊🟦🟦🟦🟩🟫🟡🟩🟦🩵🟦🟦🩵🟦🩵🟦🩵🟦🟦🟩🟡🟡⚫🟦🟦🩵🌊🟫🟡🟡🟩🟦🩵🟦🟦🟦🟦🟦🟦🌊🟦🌊🟦🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊
+🌊🌊🌊🧿🌊🧿🌊🌊🌊🌊🌊🌊🌊🟦🌊🌊🟦🌊🟦🌊🟦🟦🌊🟦🟦🟦🟦🟩🟡🟡🟡🟩🟦🟦🩵🟦🟦🩵🟦🩵🟦🩵🌊🟫🟡🟡⚫🩵🟦🟦👖🟨🟡🟡🟦🟦🟦🟦🟦🟦🟦🌊🟦🟦🌊🟦👮⚫🟦🌊🌊🟦🌊🌊🌊🌊🌊🌊🌊🌊🌊
+🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🟦🌊🟦🌊🌊🌊🟦🟦🌊🟦🟦🟦🟦🟦⚫⚫🟡🟡🟩🟦🩵🟦🩵🟦🟦🟦🟦🩵🟦🟦⚫🟡🟡⬛🟦🩵🟦🟦⬛🟡🟡🌊🩵🟦🟦🩵🟦🟦🟦🟦🌊🟦🌊🌊🟡⚫🌊🌊🌊🌊🌊🌊🟦🌊🌊🌊🌊🌊
+🌊🌊🌊🌊🌊🌊🌊🧿🌊👖🟨🟩👖🟫🟩⚫🌊🟨🟩👖🟦🟦🟦🟦🟦🟦🟦🟦👖🟡🟡🟩🟦🟦🟦🟦🩵🟦🩵🟦🟦🟦🩵🟦🟡🟡⚫🟦🟦🩵🟦⚫🟡🟡🟦🟦🟦🟦🟦🟦🟩🌊🌊🌊🌊🟦👖🟡🟡🟩🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊
+🌊🌊🟦🌊🌊🌊⚫🟡🟡🟡🟡🟨🟡🟡🟡🟡🟡🟡🟡🟡🌊🟦🟦🌊🌊🌊🟩🟦🟦🟡🟡🟩🟦🟦🟩🟦🟦🌊🟩🟡🟡🌊🟦🟦🟡🟡⬛⚫🟩⚫🩵🌌🟡🟡⚫🟫🟩🌊🩵🟦🟫🟡🟡🟡🟫🟩🟨🟡🟡🟡🟡🟩🌊🌊🌊🌊🌊🌊🌊🌊🌊
+🌊🌊🌊🟦🌊🌊🌊⬛⬛🟡🟡🟡🟫🟡🟡🟡🟫🟡🟡🟡🌊🟦🫐🟡🟡🟡🟡🟩🟦🟡🟡🟨🟡🟡🟡🟩⚫🟡🟨🟫🟡🟡🌊🩵🟡🟡🟫🟡🟡🟡⚫⬛🟡🟡🟡🟡🟡🟡🟦🟩🟡⚫⬛🟡🟡⚫⚫🟡🟡🟫⬛⚫🌊🌊🟦🌊🌊🌊🌊🌊🌊
+🌊🟦🌊🌊🌊🟦👮🌊🌊🟡🟡🟡⬛🟩🟡🟡⚫🟩🟡🟡🟩🌊🟡🟡🟡🟡🟡🟨🌊🟡🟡🟡🟫🟡🟡🟨⬛🟫⚫⚫🟡🟡🫐🟦🟡🟡🟡⚫🟡🟡🟨⬛🟡🟡⚫🟫🟡🟡🟩🟨⬛👖⚫🟡🟡⚫🌊🟡🟡🟫🌊🌊🌊🌊🌊🌊🟦🌊🌊🌊🌊
+🌊🌊🟦🌊🌊🌊🟦🌊🌊🟡🟡🟡🌊🟨🟡🟡🟩🟨🟡🟡🟩🌊🟡🟡🟡⬛⬛🟡⚫🟡🟡🟩⬛⬛🟡🟨⬛⚫🟩🟨🟡🟡🟩🟦🟡🟡⬛🫐🟨🟡🟡⚫🟡🟡🫐🫐🟡🟡🌊⚫👖👖🟡🟡🟡⚫🟩🟨🟡🟩🌊🟦🟩🌊🟦🌊🌊🌊🌊🌊🌊
+🌊🌊🌊🟦🟦🌊🌊🟦🌊🟡🟡🟡🌊🟩🟡🟡🌊🟩🟡🟡🟩🟫🟡🟡⬛🌊🌊🟡⬛🟡🟡🟨🟦🟡🟡🟩🟦⚫🟡🟨🟡🟡⚫🩵🟡🟡⚫🟦🟩🟡🟡⚫🟡🟡🟦🟦🟡🟡⚫⚫🟡🟡⚫🟡🟡⚫🟦🟡🟡🟨🌊🌊🟦🌊🌊🟨🌊🌊🌊🌊🌊
+🌊🟦🌊🌊🌊🟦🟦🌊🟦🟩🟡🟡🟩🟫🟡🟡🟩🟩🟡🟡🟫🟩🟡⚫🟦🟦⚫🟡⬛🟡🟡🟩🌊🟡🟡🟫🟩🟡🟨⚫🟡🟡🟩🟦🟡🟡⚫🩵🟡🟡🟡🟩🟡🟡🟦🟩🟡🟡⚫🟩🟡🟨👖🟡🟡🟫🟩🟨🟡🟡🌊🌊🌊🌊🌊⚫🌊🟩🌊🌊🌊
+🌊🌊🟦🌊🟦🌊🟦🟦🌊🟡🟡🟡🟦🟩🟡🟡🌊👖🟡🟡🟫🟨🟡🟩🟦🟦🟡🟡⬛🟡🟡🟨🟩🟡🟡⬛🟡🟡🟫🟩🟡🟡🟩🟦🟡🟡⬛🟦🟩🟡🟨🟩🟡🟡🟦🌊🟡🟡🟩🟡🟡⚫🟦🟡🟡🟫🟦🟨🟡🟡🟩🌊🟦🟩👖⚫🌊🌊🌊🟦🌊
+🌊🌊🌊🟦🌊🟦🌊🟦🌊🟡🟡🟡🌊🟩🟡🟡🟩🌊🟡🟡🟡🟩🟡🌊🟦🟫🟡🟡🫐🟡🟡🟫🟩🟡🟡⚫🟡🟡🟨🟩🟡🟡🟡🟩🟡🟡🟩⚫🟡🟡⬛🟡🟡🟡🌊🟩🟡🟡🌊🟡🟡🟡🟫🟡🟡🟡🌊🟩🟡🟡🟨🌊🌊🌊🟨🌊🌊🟦🌊🌊🌊
+🌊🟦🌊🟦🌊🟦🟦🌊🌊🟡🟡🟡🟦🟩🟡🟡🟩🌊🟡🟡🟡⬛🟡🟡🟡🟡🟡🟫🟩🟡🟡🟩🟫🟡🟡⬛🟡🟡🟡🟡🟡🟡🟨🌊🟡🟡🟡🟡🟡🟡🌊🟡🟡🟡🟡🟡🟡🟨🟦🟩🟡🟡🟡🟡🟡🟡🫐⚫🟡🟡🟡🟡🟡🟡⚫🟩🌊🌊🌊🟩🌊
+🌊🌊🟦🌊🟦🌊🌊🟩🟡🟡🟡🟡🟩🟨🟡🟡⚫🌊🟡🟡🟡🟨⬛🟡🟡🟡🟫🌊👖🟫🟫🟫🟩🟡🟡🟨⬛🟫🟫⬛🟫🟩🟫⚫🟫🟫⚫🟫🟨⚫🫐🟫🟫⚫🟫🟨🟫⚫🟦🫐⚫🟫⬛⚫⚫⚫🟩🌊⚫🟡🟡🟡🟡🟫🫐🌊🟦🌊🟦🌊🌊
+🌊🟦🌊🟦🟦🟦⚫⬛⬛⬛⬛⬛🟦🫐⬛⬛🟦🟦🟩🟡🟡🟡🫐⬛⬛⬛⚫🟦🟩⬛⬛🌊🟦🟡🟡🟡🟡⚫⚫🌊⚫⬛👮🟦⚫⬛🟦⚫⬛🌊🩵🫐⚫🌊⚫⬛⚫🟦🩵🟦👖⚫🌊🌊⚫🫐🌊🟦⚫⬛⬛⬛⬛⚫🌊🟦🌊🌊🟩🌊🟦
+🟦🌊🟦🌊🟦🌊🌊🌊🟦🌊🟦🟦🟦🟦🟦🟦🩵🟦⚫🟡🟡🟡🟡🌊🟦🟦🩵🟦🟫🌊🩵🟦🩵⬛🟨🟡⬛🟦🩵🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🟦🟦🩵🟦🩵🟦🩵🟦🩵🟦🟦🩵🟦🟦🟦🟦🟦🟦🟦🟩🟦👖👮🌊🟦🌊🟩🌊🟦🌊🟦🌊
+🌊🟦🟦🟦🌊🟦🟦🟦🟦🟦🟦🟦🟦🩵🟦🟦🟦🩵🟦🟡🟡🟡🟡🟡🟩🫐🟩🟨🟩🟦🩵🟦🩵🟦⬛⬛🌊🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🟦🩵🟦🟦🟦🩵🟦🟦🟦🟩🟦🟦🌊🟦🌊🟦🟩🌊🟦🌊🌊🌊🟩🌊
+🟦🟦🌊🟦🟦🟦🟦🟦🟦🟦🟦🟦🩵🟦🩵🟦🩵🟦🟦⬛🟡🟡🟡🟡🟡🟡🟡🟫👖🟦🩵🟦🩵🟦🟦🩵🟦🩵🟦🩵🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🟦🩵🟦🟦🟦🟦🟦🟦🟩🟦🌊🟦🌊🟦🟩🟦🌊🟦🌊
+🟦🟩🟦🟦🟦🟩🟦🟦🟦🟦🟦🟦🟦🟦🩵🟦🟦🩵🩵🟦⬛🟡🟡🟡🟡🟡⬛⚫🩵🟦🩵🟦🩵🩵🩵🟦🩵🩵🩵🟦🩵🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🟦🟦🩵🟦🟦🩵🟦🟦🟩🟦🟦🌊🟦🌊🌊🟦🌊🌊🌊🟦🌊🌊
+🟦🟦🟦🟦🟦🟦🩵🟦🩵🟦🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦⬛⬛⬛⬛⬛🌊🟦🩵🟦🩵🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🩵🟦🩵🩵🟦🩵🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🩵🟦🟦🩵🟦🟦🟦🟦🟦🟦🟩🟦🌊🟦🟩🌊🟦🟩🌊🌊🟩🌊
+🟦🟦🟩🟦🟦🟦🟦🟦🟦🩵🟦🟦🟦🩵🟦🟦🩵🟦🩵🟦🩵🟦🌊🌊🌊🩵🩵🟦🩵🩵🟦🩵🟦🩵🩵🩵🟦🩵🩵🟦🩵🟦🩵🩵🟦🩵🟦🩵🟦🩵🟦🩵🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🟦🩵🟦🩵🟦🟩🟦🟦🟦🌊🟦🌊🟦🌊🟦🌊🟦🌊🌊
+🟦🟦🟦🟦🟩🟦🟦🩵🟦🟦🟦🩵🟦🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🟩🌊🩵🩵🟦🩵🩵🩵🩵🟦🩵🟦🩵🩵🟦🩵🩵🩵🟦🩵🟦🩵🩵🟦🩵🟦🟦🩵🟦🩵🩵🩵🟦🩵🟦🩵🟦🩵🟦🟦🟦🟦🟦🟦🟦🌊🟩🟦🌊🟦🌊🌊🌊🟩🌊🟦🌊
+🟦🟩🟦🟦🟦🟦🟦🟦🟩🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🩵👮⬛⬛⬛⬛👖🟫⚫⬛🌊🩵🩵🩵🩵🩵🩵🩵🩵🟦🩵🩵🩵🩵🟦🩵🟦🌊🟩👖🌊🩶👖🩶🟦🌊🩵🟦🩵🟦🩵🟦🩵🟦🟩🟦🟦🟩🟦🌊🟦🌊🌊🟩🟦🌊🌊🌊🌊🌊
+🟦🟦🟦🟩🟦🟩🟦🟦🟦🩵🟦🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦⬛⬛⬛⬛⬛⚫⬛⬛⚫🟫⬜⬜🩵🩵🩵🩵🩵🩵🩵🩵🩵🩵🩵🩵🟦⚫⚫⬛⬛⬛⬛⬛🟫🩶🟩👮🩵🟦🩵🟦🩵🟦🟦🟦🟦🟦🟦🌊🟦🌊🟦🌊🟦🌊🌊🟦🌊🟦🌊
+🟦🟩🟦🟦🟦🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🩵🟦🩵🟦🫐⬛⬛⬛⬛⬛⬛⬛⬛⚫🩶🩶🩶⬜⬜🩶🩶🩵🩵🩵🩵🩵🩵🩵🟦⬛⬛⬛⬛⬛⬛⬛⬛⚫🫐🌊🌊🩶🩵🟦🩵🟦🟦🩵🟦🟩🟦🟦🌊🟦🟩🌊🟦🌊🟩🟦🌊🌊🟩🌊
+🟦🟦🩵🟦🟩🟦🟦🩵🟦🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🩵🟦⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟫🩶⬜🩶👖🟫⬜⬜🩵⬜🩵🩵⬜🩵⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⚫🟩👖🩵🟦🩵🟦🩵🟦🟦🟦🟦🟩🟦🌊🟦🌊🟩🟦🌊🌊🌊🟦🌊🌊
+🟦🟩🟦🟦🩵🟦🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵👮⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⚫⬛🟫🟫🟥🟫🟫🩷⬜🩵⬜🩵⬜🌊⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🌊🌊🩵🟦🩵🟦🟦🟩🟦🟦🟦🌊🟦🌊🟦🌊🌊🟦🌊🟩🌊🌊🟦
+🟦🟦🩵🟦🟦🩵🟦🟩🟦🩵🟦🩵🩵🟦🩵🩵🩵🩵🩵🟦⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟫⚫🟫🟫⬛🟫🟫🩷⬜⬜⬜⬜⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🩶👖🩵🟦🟦🩵🟦🟦🟦🟩🟦🟦🟩🟦🌊🟦🌊🌊🟦🌊🟦🌊🌊
+🟦🟩🟦🟩🟦🩵🟦🩵🩵🟦🩵🟦🩵🩵🟦🩵🟦🟦🩵⬛⬛⬛⬛⬛⬛⬛⚫⬛⬛⬛⬛⬛🟫⬛🟫⬛🟫⚫🟫🟥🟧⬜🩶⚫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⚫🌊🩵🟦🩵🟦🟦🟦🟦🟦🟦🌊🟦🌊🟦🟩🟦🌊🟩🌊🟦🌊🟦
+🟦🩵🟦🩵🟦🩵🟦🩵🟦🩵🩵🩵🟦🩵🩵🟦🩵🩵🌊⬛⬛⬛⬛⬛⬛🌊🩵⬛⬛⬛⬛🟫⬛🟫⬛🟫🟫🟫⬛🟫🟫🩷🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🌊🩵🟦🩵🟦🟦🟩🟦🟩🟦🟦🟩🟦🌊🌊🟦🌊🟦🌊🟩🌊🌊
+🟦🩵🟦🩵🩵🟦🩵🩵🩵🟦🩵🩵🩵🟦🩵🩵🟦🟦⬛⬛⬛⬛⬛⬛⬛🩵🩵🩶⬛⬛⬛🟫⬛⬛🟫⬛⬛🟫⬛⬛⚫⚫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛👖🩵🟦🟦🩵🟦🟦🟦🟦🟦🟩🟦🌊🟦🟩🌊🟦🌊🟦🌊🟦🌊
+🩵🟦🩵🟦🩵🩵🟦🩵🟦🩵🩵🟦🩵🩵🟦🩵🩵🫐⬛⬛⬛⬛⬛⬛🌊🩵🩵🩵🩵🩶⬛🟫🟫⬛🟫⬛🟫⬛🟫🟫⬛⬛⬛⬛⬛🟫🟫⬛⬛⬛⬛⬛🟫🟫⬛⬛⬛⬛⬛👖🩵🟦🩵🟦🩵🟦🟩🟦🟦🟦🟦🟦🌊🟦🌊🟦🟩🌊🟦🌊🌊
+🟦🟩🩵🩵🟦🩵🩵🟦🩵🩵🟦🩵🟦🩵🩵🟦🌊⚫⬛⬛⬛⬛⬛⬛🩵🩵🩶🩵🩵🩶⚫🟫⬛⬛⬛⬛⬛⬛⬛⬛🟫⬛⬛⬛⬛🟥🟫⬛⬛🟫🟥🟥🟫🟥🟫⬛⬛⬛⬛🌊🩵🩵🟦🟦🟦🟦🟦🟦🟩🟦🌊🟩🟦🌊🟦🌊🌊🌊🌊🟩🟦
+🩵🟦🩵🟦🩵🟦🩵🩵🟦🩵🩵🩵🩵🩵🟦🩵🟩⬛⬛⬛⬛⬛⬛🌊🩵🩵🩵🩵🩶⬛⬛🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫⬛⬛🟫🟥🟫⬛🟫🟥🟥🟫🟫⬛🟫🟫🟫🟦🟩🩵🟦🩵🟦🩵🟦🟩🟦🟦🟦🟦🟦🟦🌊🟦🟩🟦🌊🟦🌊🌊🌊
+🟦🩵🟦🩵🩵🩵🟦🩵🩵🟦🩵🟦🩵🩵🩵🩵🟦⚫⬛⬛⬛⬛🫐🩵🩵🩵🩵🩶⬛⬛⬛⬛🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫⬛🟥🟥🟫🟫🟫🟥🟥🟥🟥🟫🟫🟥🟫🟦🩵🟦🩵🟦🩵🟦🩵🟦🟦🟦🟩🟦🟩🟦🟩🟦🌊🟦🌊🟦🌊🟦🌊🟦
+🩵🟦🩵🟦🩵🩵🩵🟦🩵🩵🩵🩵🟦🩵🟦🩵🩵🟦⬛⬛⬛⬛🩵🩵🩵🩶🩵🌊⬛⬛⬛⬛⬛🟫🟫🟫🟫🟫🟫🟫🟫⬛⬛🟥🟫🟥🟫🟫🟥🟥🟧🟥🟫🟥🟫🩶🩶🩵🩵🩵🩵🟦🩵🟦🟦🩵🟦🟦🟦🟦🟦🌊🟦🟩🌊🟦🌊🟩🌊🌊🌊
+🟦🩵🩵🩵🟦🩵🟦🩵🩵🟦🩵🩵🩵🟦🩵🩵🩵🩵⬛⬛⬛🌌🩵🟦🩵🩵🩵⬛⬛⬛⬛⬛⬛🟫🟫🟫🟫🟫🟫🟫⬛⬛🟫🟥🟥🟫🟫🟥🟫🟥🟫⬛🟥🟥🟥🩶🩵🩵🟦🩵🟦🩵🟦🩵🟦🟦🟩🟦🟦🟩🟦🟦🌊🟦🌊🟦🌊🟦🌊🟦🌊
+🩵🟦🟩🩵🩵🩵🩵🩵🟦🩵🩵🟦🩵🩵🟦🩵🟦🩶⬛⬛⬛🌊🩵🩵🩵🩵🩶⬛⬛⬛⬛⬛⬛⬛🟫🟫🟫🟫🟫🟫⬛⬛🟫🟫🟫🟥🟫🟫🟫🟥🟫🟫⬛🟫🩶⬜🩵🩵🩵🟦🩵🟦🟦🟦🟩🟦🟦🟦🟦🟦🌊🟦🟩🟦🌊🟩🟦🌊🌊🟦🌊
+🟦🩵🩵🟦🩵🟦🩵🩵🩵🩵🩵🩵🟦🩵🩵🩵🩵🌊🟫⬛⬛🩶🩵🩵🩵🩵👖⚫🟫⬛⬛⬛⬛🟫🟫🟫🟫🟫🟫🟫🟫⬛🟫⬛⬛⬛⬛🟫🟫🟫🟥🟥🟫⬜🩵🩵🩶🩵🟦🩵🟦🩵🩵🟦🟦🩵🟦🟩🟦🟦🟩🟦🟦🟦🟦🌊🟦🟩🌊🌊🟦
+🟦🩵🟦🩵🩵🩵🟦🩵🟦🩵🟦🩵🩵🩵🟦🩵🩵🟥🟫🟫⬛🩵🩵🩶🩵🩶⬛⬛⬛⬛⬛⬛⬛🟫⬛🟫🟫🟫🟫🟫⬛⬛⚫🟫⬛⬛⬛⬛⬛🟫🟫🟥🟥🩷⬜🩵🩵🩵🩵🟦🩵🟦🟦🩵🟦🟦🟦🟦🟦🟦🟦🟦🟩🟦🟩🟦🌊🟦🌊🟦🌊
+🩵🟦🩵🟦🩵🩵🩵🩵🩵🩵🩵🩵🟦🩵🩵🩵🩵🟫🟫🟫🟥⬜🩵⬜🌊⬛⬛⬛⬛⬛⬛⬛🟫🟫🟫🟫🟫🟫⬛⬛⬛⬛⬛🟫⬛⬛⬛⬛⬛⬛🟫⬛🟫🟡🩵⬜🩶🩵🟦🩵🟦🩵🟦🟦🩵🟦🟩🟦🟩🟦🟩🟦🟦🟦🟦🟩🟦🌊🟦🌊🟩
+🟦🟩🩵🩵🟦🩵🟦🩵🟦🩵🟦🩵🩵🩵🟦🩵🩶🟫🟥🟫🩷⬜🩷🩶⬛⬛⬛⬛⬛⬛⬛🟫⬛🟫🟫🟫⬛🟫🟫⬛🟫🟫⬛⬛⬛⬛🟫⬛⬛⬛⬛⬛⬛🟥⬜🩵🩵🩶🩵🩵🩵🟦🩵🟦🩵🟦🟦🩵🟦🟦🟦🟩🟦🟩🟦🌊🟦🟩🌊🟦🌊
+🟦🩵🟦🩵🟦🩵🟦🩵🩵🩵🩵🩵🟦🩵🩵🩵🩵🟥🟫🟥🟧🟡⚫⬛⬛⬛⬛⬛⬛⬛🟫🟫🟫🟫🟫⬛⬛⬛🟫🟫🟫⬛🟫⬛⬛🟫⬛⬛⬛⬛⬛🟫⬛🟫🟧⬜🩵🩵🟦🩵🩶🩵🩵🩵🟦🟩🟦🩵🟦🩵🟦🟦🟦🟦🟩🟦🟦🌊🟦🌊🟦
+🟦🟩🟦🩵🩵🟦🩵🟦🩵🟦🩵🩵🩵🩵🩵🩵🩵🟫🟥🟫🟥🩶⬛⬛⬛⬛⬛⬛⬛🟫🟫🟫🟫⬛⬛⬛⬛⬛🟫🟧🟫🟫⬛🟫⬛⬛🟫⬛🟫⚫🟫⬛🟫⬛🟫🩶🩶🩵🟥🟥🩶🩶🩶🩶🩶🩵🩶🟩🩵🟦🟩🩵🟦🟩🟦🟦🟩🟦🌊🟩🌊
+🟦🩵🟦🩵🟦🩵🩵🩵🟦🩵🩵🟦🩵🩵🩵⬜🩵🟥🟫🟥🟫🟥⬛⬛⬛⬛⬛⬛🟫⬛🟫⬛⬛⬛⬛🟫🟫🟫🟫🟫🩷🟫⬛🟫⬛🟫⬛⬛⬛🟫⬛⬛⬛🟫🟫🩶🩶🩶🟫🩷🟫🟥🟫🟥👖⚫🌃👖🌊🩶🟦🟦🩵🟦🟦🟩🟦🌊🟦🟦🌊
+🟦🟦🟩🟦🩵🟦🩵🟦🩵🩵🩵🩵🩵🩵🩵🩵⬜🟫🟥🟫⬛🟫⬛⬛⬛⬛⬛⬛🟫⬛⬛⬛⬛⬛⬛🟫🟫🟫⬛🟫⚫🟧🟫⬛⬛⬛⬛🟫⬛⬛🟫⬛⬛⬛⬛🟥🩷🟥🟧🩶🟫🟫🟫🌃⬛⬛🌌🌃🌊🌊🟩🟦🟩🟦🟩🟦🟦🌊🟩🌊🟦
+🟦🩵🟦🩵🟦🩵🩵🩵🟦🩵🩵🩵🩵🩵⬜🩵🩵🩶🟥🟫⬛🟫⬛⬛⬛⬛⬛🟫⬛⬛⬛⬛⬛🟫⬛⚫🟫🟫🟫🟫⬛🟫⬛⬛⬛⬛⬛⬛⬛🟫⬛⬛🟫⬛⬛🟥🟫🟧🟥🟧🟥🟫🌃⬛⬛⬛🌌⚫⚫👮🌊🟦🟦🟦🟦🌊🟦🟦🌊🟦🌊
+🟦🟩🟦🩵🟦🩵🟦🩵🩵🩵🩵🩵🩵⬜🩵⬜🩵⬜🟫🟫⬛⬛⬛⬛⬛⬛🟫⬛⬛⬛⬛⬛⬛🟫🟫⬛🟫🟫🟫🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟥🟥🟫🟧🟫🟥🟫⬛⬛⬛⬛⬛🌃🌃🫐🫐🟩🟦🟩🟦🟩🟦🌊🟦🌊🌊
+🟦🩵🟦🩵🟦🩵🩵🟦🩵🟦🩵🩵🩵🩵⬜🩵⬜🩶🟥🟫⬛⬛⬛⬛⬛⬛🟫⬛⬛⬛⬛⬛⬛⬛🟫🟫⬛⬛🟫🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟫🟥🟧🟫🟫⚫⬛⬛⬛⬛⬛⬛🌃🫐🫐👮🌊🟦🟦🟦🟦🌊🟦🌊🟦🌊
+🟦🟩🟦🩵🩵🟦🩵🩵🩵🩵🩵🩵⬜🩵⬜🩵⬜🩶🟫🟫⬛⬛⬛⬛⬛🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛🟫🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟧🟫🟫🟫⬛⬛⬛⬛⬛⬛⬛⬛🌃🌃🫐🫐👖🟩🟦🌊🟩🟦🌊🟩🌊🟦
+🟦🟦🩵🟦🩵🟦🩵🟦🩵🩵🩵🩵⬜🩵⬜🩵⬜🩶⬛⬛⬛⬛⬛⬛🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟫⬛⬛⬛⬛⬛⬛⬛👖🌊⚫⚫👖🟧⬛🟫🟫⬜🟥🟫🟫🟫🟫⬛⬛⬛⬛⬛⬛⬛🌌🌃🫐🫐🌊🟦🌊🟦🟦🌊🟦🟦🌊🌊
+🟦🟩🟦🩵🟦🩵🩵🩵🩵🩵🩵🩵⬜🩵⬜⬜⬜🟨⚫⬛⬛🟫⬛🟫⬛⬛⬛⬛⬛🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⚫🩶🌊🩶🩶⬜⬜⬜⬜⬜🟡🩶🟫🟫🟥⚫⬛⬛⬛⬛⬛⬛⬛🌌🌃🫐🫐👖🟦🟩🟦🌊🟦🌊🌊🟦🌊
+🟦🟦🟩🟦🩵🟦🩵🟦🩵🩵🩵⬜🩵⬜⬜🌊🟫🩶🟫🟫🟫🟫🟫⬛⬛⬛⬛⬛⬛⬛🟫⚫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🩶🌊🩵🟦🩶🟨🟧🟡⬜⬜⬜⬜🟥🟫🟫🩶⬛⚫🟫⬛⬛⬛⬛⬛🌃🌃🫐👮🌊🟦🟦🟦🟩🟦🌊🟦🌊🟦
+🟩🟦🟦🩵🟦🩵🟦🩵🩵🩵⬜🩵⬜🩵⬜🟫⚫🟫🟫⬛🟫🟫🟫🟫🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🩶🩶🩵🩶🟨🟥🩶⬜⬜⬜⬜⬜🟫🟥🟫🩶🟫⚫⬛⬛⬛⬛⬛⬛🌌🌃🫐🫐🟩🟦🌊🟦🌊🟦🌊🟦🌊🌊
+🟦🟦🟩🟦🩵🩵🩵🩵🩵🩵⬜🩵⬜⬜⬜⚫⚫🟫🟫🟫🟫🟫🟥🟫🟧🟧🟫🟫🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🩵🩶🟦🌊🟦⬜⬜⬜⬜⬜🟡⬜🟫🟫🟫🩶⬛⬛⬛⬛⬛⬛⬛⬛🌌🌃🫐🌊🟦🟦🟩🟦🌊🟦🌊🟩🟦🌊
+🟦🟩🟦🩵🟦🟦🩵🩵🩵⬜🩵⬜🩵⬜🩶⬛🩶🩶🟫🟫🟫🟫⚫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛👖👖🩶🌊🌊🩶🟩🌊🩶⬜⬜⬜🟧🩶🩶🟫🟫🩶🫐⬛⬛⬛⬛⬛🌃🫐🫐🌊🌊🌊🟩🟦🟦🌊🟦🟩🟦🌊🌊🟦
+🟦🟦🩵🟦🩵🩵🩵🩵🩵⬜⬜🩵⬜🩶⬛🟫⬜🟡🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🩶🟧🩶🩶🌊🟩🌊🌊🩵🌊🟦🟦⬜⬜🩷🟧🟫🟫🟫⬜⚫⬛⬛⬛⬛🌊🌊🌊🌊🌊🟩🟦🌊🟦🟩🟦🌊🟦🌊🟦🌊🌊
+🟦🟩🟦🟩🩵🟦🩵🩵🩵⬜⬜⬜🩵🟫🩶⬜⬜⬜🩶⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟫🟧🟧⬜🩶🩶🌊🟦🌊🌊🩶🟦👖🌊🩶⬜⬜⬜🩶🩶🩶🟫⚫⬛⬛⬛⬛🌊🌊🟩🌊🌊🌊🌊🟦🟦🟦🌊🟦🌊🟦🌊🟦🌊
+🟦🟦🩵🟦🩵🩵🩵🩶🩵🩵⬜⬜👖🩶⬜⬜⬜⬜🟨⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟫🟧🩷🟨🩶⬜🌊🌊🟩🌊🌊🌊🩵🌊🌊🟩🩷🟧🟧🟧🟫🟫🟫⚫⬛🌊🩶🌊⚫🫐🌊🌊🌊🟦🟩🟦🟩🟦🌊🟦🌊🌊🟦🌊🟦
+🟩🟦🟩🟦🩵🟦🩵🩵🩵🩵⬜🩶🟫⬜⬜⬜⬜🟡👖⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟧🟧🟧🟨🩷🟡🩶🌊🌊🌊🟦🌊🌊🩶🌊🌊🩶🟨🟧🟧🟥🟧🟧🟫🟫🟫🩶🌊⬛⬛🌊🌊🌊🟩🟦🟦🟦🟦🟩🟦🌊🟦🌊🌊🌊🌊
+🟦🟩🟦🩵🟦🩵🩶🩵🩶⬜🩵🟥⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟧🟥🟧🟧🟨🩷🟨🩷🩶🟩🌊🌊🟩🌊🌊🩵🌊🌊🩶🟨🟧🟧🟧🟧🟧🟧🟧🟫⬛⬛⬛⬛⬛⚫🌊🟩🟦🟩🟦🟦🌊🟦🌊🟦🌊🟦🟦🌊
+🟦🟦🩵🟩🩶🩵🩵⬜⬜⬜🩶🩶⬜⬜⬜⬜⬜🟧⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🌊🩶🟫🟧🟧🟧🟧🟧🟨🩷🟡🟧🩶🩶🌊🌊🟦🌊👖🩶🌊🌊🟫🟧🟧🟧🟧🟥🟧🟧🟥🟫⬛⬛⬛⬛⬛⬛🫐🩶🟦🟦🟩🟦🟦🌊🟦🌊🟩🌊🌊🟦
+🟩🟦🟩🩵🩵🩶🩵⬜🩵⬜🩶⬜⬜⬜⬜⬜⬜🟫⬛⬛⬛⬛⬛⬛🟫🩶🩶🩶🟩🩶🩶🟧🟧🟧🟧🟧🟨🟧🟨🩷🟨⬜⬜🌊🌊🟩🌊👖🟩🟩🌊🩶🟧🟫🟧🟧🟧🟧🩶🟧🟧⬛⬛⬛⬛⬛🌌👖🩵🟦🩵🟦🟩🟦🌊🟩🟦🌊🟦🌊🌊
+🟦🟩🟦🩶🟦🩵🩶🩵🩶🩶⬜⬜⬜⬜⬜⬜🟡🌌⬛⬛⬛⬛⬛🩶⬜⬜🩵🩶🟦🩵🩶🩶🟧🟧🟧🟧🟧🟧🟨🟧⬜🟧🩵🩶🌊🌊🩶🫐🩶🟦👖👖🟧🟧🟫🟧🟫🟧🟧🟧🟥🟫👖⬛⬛⬛⬛🌊🩵🩶🟦🟦🌊🟦🌊🟦🌊🌊🌊🟦🌊
+🩵🟦🩵🟦🩶🟦🩵🩶🩵⬜⬜⬜⬜⬜⬜⬜🩶⬛⬛⬛⬛⬛⬜⬜🩵🩶🩵🩶🟦🩶🟦🩶🟧🟧🟨🟧🟧🟧🟧🟧⬜🟧🩶⬜🌊👖🟩👖🫐🩶🫐🩶🟫🟧🟥🟫🟧🟧🟧🩶🟧🟫⬛⬛⬛⬛🌃🩵🩶🩵🟦🟩🟦🌊🟦🌊🟦🌊🟦🌊🌊
+🟩🟦🟩🩵🩶🩵🩶🩵🟫👖🩶⬜⬜⬜⬜🟡⚫⬛⬛⬛⚫⬜⬜⬜🩵🩶🟦🌊🩵🌊🟩🟦🌊🟨🩷🟨🟧🟧🟧🟧🟥🟧🟧🩶🩵🌊🌊🌊🌊🟩🫐🌊🟫🟧🟫🟥🟧🟧🟧🟧🟥🟫⚫⬛⬛⬛🌊🩵🩶🩵🟦🟦🟦🟩🟦🌊🌊🟦🌊🌊🟦
+🟦🩶🟦🟩🟦🩶🩵🩶⚫⚫🟫⬜⬜⬜⬜⬜⬛⬛⬛🫐🩵🩶🟦🩶🟦🩶🌊🟦🟩🟦🟦🩶🩵🩶🟧🟧🟧🟧🟧🟧🟧🟥🟧🩶🩶🩶🌊🌊🌊👖🟩🫐🟫🟫🟫🟫🟧🟧🩶🟧🟧👖⬛⬛⬛⬛🩶🩵🟦🩶🟦🟩🟦🌊🟦🌊🟦🌊🌊🌊🌊
+🟩🟦🟩🟦🩶🟦🩶🌊⚫⚫👖⬜🩶⬜⬜🩶⬛⬛⚫🩶🩵🩶🩵🌊🟩🟦🩵🟦🩶🩶🩶🩵🩶🩶🟧🟨🟧🟥🟧🟫🟧🟧🟧🩶🌊⚫🟩👖🟩⚫👖⚫⚫⚫🟫🟧🟧🟧🟧🩶🟧⚫⬛⬛⬛🌊🟦🩶🟦🟦🟩🟦🌊🟦🌊🌊🌊🟦🌊🟦🌊
+🟦🟩🟦🩶🟩🟦🟩⚫⚫⚫🟫🩶⬜⬜🩶🟫⬛⚫🩶🟦🩶🩵🩶🩵🩶🩶🩶🌊🩶🌊🌊🟩🟦🟦🩶🟨🟧🟧🟫🟧🟫🟧🟫⚫⬛⚫⬛⚫⚫⬛⬛⬛⚫🩶🩶🟨🩶🩶🩶🩷🟫⬛⬛⬛⬛🩶🟦🟩🟦🟦🌊🟦🌊🟦🌊🟦🌊🌊🌊🌊🌊
+🟩🟦🟩🟦🟦🩶🌊⚫⚫⚫⚫⚫⚫⚫🩶⬛👖🩶🩶🩵🌊🩵🌊🟦🟦🟩🌊🌊🩵🌊🟦🌊🟦🟩🌊🩶🟧🟧🟥🟫🟫🟥⬛🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛👖🩶🩷🟨🩶🩶🩶⬛⬛⬛🟦🟩🟦🟦🟩🟦🟦🟩🟦🌊🟦🌊🟩🟦🌊🟦🌊
+🟦🟩🟦🟩🟦🟩🫐⚫⚫⚫⚫⬛⬛⚫🫐🌊🟩🟦🌊🌊🩵🟦🌊🌊🩵🌊🟦🌊🟦🩵🌊🌊🟩🟦🌊🩶🟫🟫🟧🟫🟥🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⚫⚫🟫🟧🟧🟧🟧🟧🩶⬛⬛🌊🩶🟦🟦🟦🟦🟩🟦🟦🌊🟦🌊🌊🌊🌊🌊🌊🌊
+🌊🟦🟩🟦🩶🫐🫐⚫🫐⚫⚫🟩🩶🟦🟩🌊🟦🟩🌊🌊🟦🟩🟦🌊🟦🟦🌊🌊🌊🩵🌊🌊🌊🌊🟩🩶🟫🟫🟫🟫🟥🟫🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟫🩶🟧🩶🟥👖⬛🌊🩶🟦🩶🟩🩶🟦🟦🟦🟩🟦🌊🟦🌊🟦🌊🟦🌊🌊
+🟩🟦🟩🩵🌊🫐🫐⚫⚫🩶🩶🩶🩵🌊🌊🌊🟦🌊🟦🌊🟦🩵🌊🌊🟩🟦🌊🟩🌊🌊🩵🌊🌊🌊🌊🌊🩶🟧🟫🟥🟧🟧🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟫🟧🟧🟥🟧⚫🟩🟦🟦🟩🟦🟦🩵🟦🟩🟦🌊🟦🟩🌊🌊🌊🌊🌊🌊🌊
+🌊🟦🩵🌊👖⚫🟩👖🩶🩶🟩🟦🩶🟦🟩🌊🟦🟩🌊🟩🌊🩵🌊🌊🌊🟦🟩🌊🌊🌊🟩🩶👖🫐👖🟩👖🟫🫐⬜🩵🩶🩵🟫⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟫🟧🩶🟧🩶🟫🩶🟦🩶🟦🟦🩶🟦🟩🟦🟦🟩🟦🌊🟦🌊🟦🌊🌊🟦🌊
+🟩🟦🟩🌊👖🟩🟫🩶🟨🩶🩶🩶🟩🌊🟦🌊🟦🟦🌊🟦🌊🟦🟩🌊🟦🌊🟦🌊👖🌊👖🌊🩵⚫⚫⚫⚫⬛🩶🩵🩶⬜🩶🩵⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟫🩷🟧🟥🟧🟦🩶🟦🩵🩶🩵🩶🟦🟦🩶🟦🟦🌊🟦🌊🌊🌊🌊🟩🌊🌊
+🟦🟩🌊🟩👖🩶🩶🟧🩶🩶🌊🟩🟦🟦🌊🟩🌊🟩🌊🌊🌊🟩🟦🌊🌊👖🟩🌊🌊🫐👖⚫👖🩶🟩🌊🟩👖🩶🩶🩵⬜⬜⬜🌊⬛⬛⬛⬛⬛⬛⬛⬛👖🩶🟫🟨🩶🟧🩶🩶🩶🩵🩶🩵🩶🟦🟩🟦🌊🟩🌊🟦🌊🌊🟦🌊🌊🌊🌊🌊
+🌊🟩🌊🩶🟫🩶🟫🩶🟫🩶🩶🌊🟩🩶🌊🌊🌊🟦🌊🟩🌊🌊🩶🌊🫐👖👖🌊🟩🫐⚫🫐⚫🫐👖⚫👖🩶🩵🩶⬜🩶🩵🩶🩶⬛⬛⬛⬛⬛⬛⬛⬛🟫🌊🩶🟥🟧🩶🟫🩶🩶🩶🟦🟦🟦🌊🟦🌊🟦🟦🟦🟩🌊🟦🌊🌊🟦🌊🌊🌊
+
+</pre>
+
+## Terminology
+
+- **🍆vegetable** — a polyglot file produced by Mohabbat, typically with extension `*.bat`.
+- **Mohabbat** — the self-hosting vegetable that is also a builder. Its
+  filename is `mohab.bat`.
+- **rusticated** — a set of APIs and libraries exposing those to create rich modern platform in WASM.
+- **brot** — a small Rust loader that unpacks the payload and launches it.
+- **washmhost** — a wrapper around Wazero, exposing the
+  rusticated ABI to a guest WASM module, and runs it.
+- **brain** — WASM module compressed and embedded in a 🍆vegetable.
+- **pool** — the Brotli-compressed concatenation of all washmhosts plus
+  the brain.
+- **Modern Five** — the target matrix that Mohabbat addresses: Linux x64/ARM, Windows x64/ARM, macOS ARM.
+- **Node.js fallback** — every 🍆vegetable also embeds a Node.js host. On platforms outside the native slots — currently **macOS** is the most common case, plus ARM Linux musl, FreeBSD, Android, etc. — if Node ≥ 18 is present it is used automatically.
+
+## What it is and how it works
+
+This project includes Rust and Go code orchestrating the development of Mohabbat vegetables.
+
+At launch time a vegetable extracts from its own file a binary runtime capable of running WASM, the WASM brain that is the actual app code, and runs it.
+
+The custom set of low-level APIs (rusticated platform) can be loosely considered analogoous to WASI but asynchronous and richer. Unlike WASI, for rusticated secure sandboxing is explicitly **not** a goal.
+
+# Building and running
+
+**Mohabbat** is the main orchestrator for building the rusticated support libraries, and 🍆vegetables themselves.
+
+It can be run both as a native binary, and as a 🍆vegetable too! Naturally, the name of the 🍆vegetable is `mohab.bat`.
+
+Every example below can be run as `go run . <...>` or as `mohab.bat <...>`. Of course to achieve the latter you need to get that mohab.bat vegetable built first, hence the native build is the first step.
+
+## Build the core libraries and mohab.bat
+
+```bash
+go run .
+```
+
+or
+
+```
+mohab.bat
+```
+
+This rebuilds the core libraries (Rust and Go) and the mohab.bat vegetable itself.
+
+## Building 🍆🍆vegetables
+
+```bash
+go run . demo -o demo.bat
+go run . demo/loch -o loch.bat
+go run . kabibi-rust -o kabibi-rust.bat
+go run . kabibi -o kabibi.bat
+go run . demo-go -o demo-go.bat
+go run . demo-go/trivial -o trivial.bat
+go run . demo-go/curl -o curl.bat
+```
+
+or
+
+```bash
+mohab.bat demo -o demo.bat
+mohab.bat demo/loch -o loch.bat
+mohab.bat kabibi-rust -o kabibi-rust.bat
+mohab.bat demo-go -o demo-go.bat
+mohab.bat demo-go/trivial -o trivial.bat
+mohab.bat demo-go/curl -o curl.bat
+```
+
+You can run a 🍆vegetable directly on any machine from the currently supported targets.
+
+Note that building of a vegetable takes a few minutes due to extreme brotli compression. Makes them small though: 5-6Mb.
+
+## Run projects on rusticated
+
+For development spending few minutes to compress a vegetable only to see a bug is not ideal. There is a way to skip the vegetable build and run the project directly on rusticated WASM host.
+
+```bash
+go run . demo -r
+go run . demo/loch -r
+go run . kabibi-rust -r
+go run . demo-go -r
+go run . demo-go/trivial -r
+go run . demo-go/curl -r https://example.com
+```
+
+or
+
+```
+mohab.bat demo -r
+mohab.bat demo/loch -r
+mohab.bat kabibi-rust -r
+mohab.bat demo-go -r
+mohab.bat demo-go/trivial -r
+mohab.bat demo-go/curl -r https://example.com
+```
+
+## Node.js fallback
+
+Every 🍆vegetable embeds a small JS host alongside the native binaries. On an
+unsupported platform — **macOS** is the primary current case, plus FreeBSD,
+Android, ARM Linux musl, and others — Node.js ≥ 18 is used as the WASM host
+instead of a native brot binary.
+
+The fallback activates **automatically** when no native brot matches the
+current OS/CPU. It can also be **forced** on any platform with the hidden
+environment variable:
+
+```bash
+MOHABBAT_USE_NODE=1 ./demo-go.bat
+```
+
+or on Windows:
+
+```bat
+set MOHABBAT_USE_NODE=1
+demo-go.bat
+```
+
+Node is located by searching `$PATH` then common installer locations (nvm,
+fnm, Volta, n, Chocolatey, Homebrew). A diagnostic message is printed if
+no usable Node is found and no native brot is available either.
+
+## Platform Selection
+
+You can override the auto-detected platform by providing the `--platform` argument to any vegetable. This is useful for exploiting emulation environments (like running `x64` binaries on `ARM64` host or vice-versa):
+
+```bash
+# Extract and run the Linux AMD64 build explicitly
+./demo-go.bat --platform linux-amd64
+
+# Force Node.js fallback locally
+./demo-go.bat --platform node 
+```
+
+**Valid Platform Names (Canonical):**
+- `node`
+- `linux-amd64`
+- `linux-arm64`
+- `darwin-arm64`
+- `windows-amd64`
+- `windows-arm64`
+
+**Abbreviated Identifiers:**
+- `amd64` (Dynamically targets `{current_os}-amd64`)
+- `x64` (Synonym strictly mapping to `amd64`) 
+- `arm64` (Dynamically targets `{current_os}-arm64`)
+
+If the slot was disabled or unavailable during assembly, the vegetable will elegantly emit an error informing you: `❌ Platform 'X' is not included in this vegetable`. 
+
+## Architectural Note: Ghost Processes
+
+To guarantee system stability, native Mohabbat runners (`brot` loaders executing the `washmhost` runtime environment) construct a resilient **three lines of defence** network prohibiting left-over ghost processes on unexpected termination or crash:
+
+1. **Explicit Polling/Wait**: The `washmhost` runtime initializes an immediate native watchdog upon startup checking parent termination. In UNIX it polls `os.Getppid()`; on Windows it attaches a native lock (`OpenProcess(SYNCHRONIZE)` / `WaitForSingleObject`) tracking `brot`'s PID. Should `brot` ever disappear from the host index, `washmhost` executes an immediate `os.Exit(1)`.
+2. **OS-Enforced Cascading Shutdown**: When loaded, `brot` binds child boundaries natively mapping host guarantees:
+   - On Linux, `brot` executes `prctl(PR_SET_PDEATHSIG, SIGKILL)` in the strict span between `fork` and `execve`, demanding the kernel kill `washmhost` if the parent dies for *any* reason abruptly.
+   - On Windows, `brot` deploys `CreateJobObjectW` carrying limits (`JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE`), nesting the `washmhost` process explicitly inside it. Ripping the parent forces teardown cascade instantly.
+3. **Explicit Cleanup Kill**: Traditional intentional host bounds execute specific teardowns targeting process exits correctly handling standard paths.
+
+# 🍆Vegetable file layout
+
+A 🍆vegetable is a single file with three zones concatenated end to end.
+
+```
+[Zone A: polyglot script header   ]  text, small, executable by sh + cmd
+[Zone B: brot table               ]  N native loader binaries, back to back
+[Zone C: brotli pool              ]  one brotli stream, all hosts + payload
+EOF
+```
+
+## Zone A — polyglot script header
+
+A short hybrid script that both `cmd.exe` and POSIX `sh` interpret
+correctly. Responsibilities:
+
+1. Detect OS and CPU architecture using only built-in shell features.
+2. Look up the absolute byte offset and length of the correct brot in
+   Zone B.
+3. Extract the range from the chosen brot's start offset to the end of the
+   vegetable file (the concatenated brot + pool) to a single temp file.
+   This produced file is the self-extracting runner.
+4. `chmod +x` it on POSIX.
+5. Execute it, forwarding all the user's CLI arguments.
+6. Exit with the runner's exit code.
+
+Complications to handle:
+
+- Polyglot syntax: the header must be valid for both shells. Standard
+  trick: open with a CMD label/goto that jumps over the sh portion, with
+  the sh portion arranged so CMD never executes it. Several known
+  templates exist; pick one and freeze it.
+- Some sh extraction utilities differ across distros. Restrict to POSIX
+  `dd`, `head`, `tail`. Avoid `tail -c +N` ambiguity by using `dd
+  if=... bs=1 skip=... count=...` or `dd bs=1M` with computed counts.
+- macOS `dd` and GNU `dd` differ in progress output; use `2>/dev/null`.
+- Windows lacks built-in binary slicing. The header must invoke
+  PowerShell to do the slice: `powershell -nop -c "..."` using
+  `[IO.File]::OpenRead` + `Seek` + `Read`. PowerShell is present on every
+  supported Windows (5.1+ on Win10/Win11). Do not depend on `pwsh`.
+- The `.bat` extension is mandatory because:
+  - CMD will refuse to run a file without a recognized extension.
+  - POSIX shells do not care about extension when invoked with
+    `sh file.bat` or when the file has the executable bit and the
+    shebang-like first line is in the polyglot header.
+- The header must NOT contain a UTF-8 BOM (CMD chokes on it).
+- The header must end its CMD section with `goto :eof` and an explicit
+  exit code propagation. The sh section must `exit $?`.
+- The temp file path must be unique per run (PID + random) so concurrent
+  invocations do not collide.
+
+## Zone B — brot
+
+- Each brot is a complete native executable (ELF / PE / Mach-O).
+- Brots are concatenated with no padding.
+- Their offsets and lengths are baked into Zone A at assembly time.
+- The Zone A header does not parse anything — it only slices by known
+  numbers.
+
+Brot is built in Rust with precautions making it tiny and slim. That means no-std (no Rust standard library, relying strictly on direct OS syscalls), no-main (no Rust preamble, relying on target OS entry point conventions) and no CRT (C runtime sometimes is linked in by Rust apps, which is completely unnecessary in this case). The brot is a single binary that decompresses the pool and launches the washmhost.
+
+Brot is carefully coded to avoid some common traps that pull in unnecessary general Rust boilerplate. For example, brot implements a rudimentary simplistic memory allocator, which is enough for its narrow goal.
+
+The Rust project for brot is designed to be cross-compiled for all supported targets with parameters passed to remove fluff and achieve highest size optimisation. The brot compilation options are a part of mohabbat builder.
+
+## Zone C — brotli pool
+
+- Single brotli stream. Decoder is in the brot.
+- Decompressed content is a fixed sequence: washmhost #1, washmhost #2,
+  ..., washmhost #N, payload. Lengths and order are baked into each brot
+  as constants (see §6 on patching).
+- One stream rather than N streams: cross-binary redundancy between
+  washmhosts is significant; joint compression matters.
+
+# Washmhost
+
+The WASM host runtime uses Wazero, a pure-Go WASM runtime. There are no clever tricks in the host: it simply runs Wazero in the way it's intended, and implements **host functions** that constitute rusticated WASM ABI*.
+
+<sup>*ABI = Application Binary Interface, a fancy way to say very rigid and low-level API.</sup>
+
+The host is compiled for all supported targets, and is embedded in the brotli pool. The brot decompresses the pool and launches the host.
+
+# Rusticated Go
+
+In order for Go code to run on rusticated WASM ABI, the way Go reads and writes files, accessess network or environment must be re-implemented on top of that rusticated WASM ABI.
+
+This is what rusticated-go does. Go allows 'overlaying' or swapping system libraries with custom implementations. Our **rusticated-go** was carefully designed to fit with **Go 1.27.1** and makes normal unmodified Go code to run inside that WASM without any changes or limitations.
+
+The beauty of Go on rusticated is that its *green threads* (goroutines) are perfectly fit to rusticated WASM async model. That means while one goroutine is waiting for a file or network read, another goroutine can run and do something else. This is a very important feature of Go that makes WASM hosting very efficient and viable.
+
+**Go 1.27 Compatibility**
+Go 1.27 reserved the lower 4 bits of the lock counter for internal status flags. $2^4 = 16$. To increment the actual lock count without overwriting those flags, the runtime now adds 16 instead of 1. Our overlay must do the same.
+
+# Example projects
+
+[demo-go](demo-go) — a simple Go project that runs on rusticated, demonstrating file I/O, network and timeouts showing cancelling io tasks.
+
+[demo-go/trivial](demo-go/trivial) — a very trivial Go project that's barely hello world.
+
+[kabibi](kabibi) — a flagship project that fuses shell (mvdan.cc/sh) file manager and AI chat bot. It's a work in progress and best works in native, making it fully fit onto Mohabbat rusticated platform is our current goal.
+
+# Rusticated sysroot
+
+For Rust to have the same freedom as Go on rusticated, sacrifices have to be made.
+
+Unlike Go, many Rust's system APIs are synchoronous and blocking. The language supports async/await, but it's still not a default for I/O APIs. In that sense it's worth mentioning [Compio](https://crates.io/crates/compio) library that's the current industry answer to the problem.
+
+The Rust team are moving Rust to async model too but that may take years. Our rusticated sysroot jumps the gun now, rewriting system libraries in a way that completely removes blocking APIs and replaces them with asynchronous. It's much more drastic than what Compio does: normal file I/O and stdio is completely absent on rusticated and replaced with async.
+
+## Expample projects
+
+That means many third-party libraries will fail to build. But the project contains a set of demos for at least few basic examples:
+
+[demo](demo) — reading and writing files, reading/writing from terminal, using timeouts and concurrency to cancel io.
+
+[lock](demo/loch) — a simple prototype of a two-panel file manager UI on ratatui, with file operations and navigation.
+
+[kabibi-rust](kabibi-rust) — a bit more complex prototype for the same, including mock shell and mock side panel with typing and interaction.
+
+<!--
+*/ }
+-->
+
